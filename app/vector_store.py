@@ -11,14 +11,14 @@ from app.config import QDRANT_URL, EMBEDDING_MODEL
 # ------------------------------------------------
 # Initialize Qdrant
 # ------------------------------------------------
-print(QDRANT_URL)
+#print(QDRANT_URL)
 qdrant = QdrantClient(
     url=QDRANT_URL,
     timeout=60
 )
 
 
-print(qdrant.get_collections())
+#print(qdrant.get_collections())
 # ------------------------------------------------
 # Initialize embedding model
 # ------------------------------------------------
