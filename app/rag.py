@@ -24,13 +24,10 @@ from google import genai
 from app.config import GEMINI_API_KEY, GEMINI_MODEL
 
 
-client = genai.Client(
-    api_key=GEMINI_API_KEY
-)
-
-
-
 def generate_answer(user_query, context):
+    client = genai.Client(
+        api_key=GEMINI_API_KEY
+    )
 
     prompt = f"""
 You are a knowledgeable wine specialist.
