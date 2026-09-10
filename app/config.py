@@ -18,6 +18,7 @@ TRAIN_FILE_NAME = "top_rated_wines.csv"
 
 
 # Qdrant
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+QDRANT_URL = os.getenv("QDRANT_URL")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 COLLECTION_NAME = "top_wines"
 TOP_K = 3

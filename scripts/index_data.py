@@ -66,5 +66,13 @@ def index_data():
 
     print("########### Vector store initialized successfully. ##########################")
 
+    count_result = qdrant.count(
+        collection_name=COLLECTION_NAME,
+        exact=True
+    )
+
+    print(f"Rows in source data: {len(data)}")
+    print(f"Points in Qdrant: {count_result.count}")
+
 if __name__ == "__main__":
     index_data()
