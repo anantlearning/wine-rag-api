@@ -3,7 +3,7 @@ import pandas as pd
 
 from qdrant_client import models
 
-from app.vector_store import qdrant, encoder
+from app.vector_store import qdrant
 from app.config import (
     COLLECTION_NAME,
     TRAIN_FILE_NAME
@@ -57,7 +57,10 @@ def index_data():
         points=[
             models.PointStruct(
                 id=idx,
-                vector=encoder.encode(doc["notes"]).tolist(),
+                vector=models.Document(
+                    text=doc["notes"],
+                    model=EMBEDDING_MODEL
+                ),
                 payload=doc
             )
             for idx, doc in enumerate(data)
@@ -73,6 +76,11 @@ def index_data():
 
     print(f"Rows in source data: {len(data)}")
     print(f"Points in Qdrant: {count_result.count}")
+
+    if len(data) == count_result.count:
+        print("Index verification successful.")
+    else:
+        print("WARNING: Source rows and Qdrant points do not match.")
 
 if __name__ == "__main__":
     index_data()
